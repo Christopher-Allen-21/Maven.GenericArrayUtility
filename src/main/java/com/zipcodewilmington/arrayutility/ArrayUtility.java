@@ -1,6 +1,7 @@
 package com.zipcodewilmington.arrayutility;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Created by leon on 3/6/18.
@@ -32,28 +33,28 @@ public class ArrayUtility <T>{
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge,Class<T> clazz) {
-        T[] returnArray = mergeArrays(inputArray,arrayToMerge,clazz);
+        T[] mergedArray = mergeArrays(inputArray,arrayToMerge,clazz);
 
-        T previous = returnArray[0];
-        T mostCommon = returnArray[0];
-        int count = 1;
-        int maxCount = 1;
+        T object1;
+        Integer count1 = 1;
+        T object2 = null;
+        Integer count2 = 1;
 
-        for(int i=1;i<returnArray.length;i++){
-            if(returnArray[i].equals(previous)){
-                count++;
-            }
-            else{
-                if(count > maxCount){
-                    maxCount = count;
-                    mostCommon = returnArray[i-1];
+        for(int i=0;i<mergedArray.length;i++){
+            object1 = mergedArray[i];
+            for(int j=i+1;j<mergedArray.length;j++){
+                if(object1.equals(mergedArray[j])){
+                    count1++;
                 }
-                previous = returnArray[i];
-                count = 1;
             }
+            if(count1 > count2){
+                object2 = object1;
+                count2 = count1;
+            }
+            count1 = 1;
         }
 
-        return mostCommon;
+        return object2;
     }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
@@ -66,9 +67,9 @@ public class ArrayUtility <T>{
         return count;
     }
 
-    public T[] removeValue(T valueToRemove,Class<T> clazz) {
+    public T[] removeValue(T valueToRemove) {
         Integer numOfOccurences = getNumberOfOccurrences(valueToRemove);
-        T[] returnArr = (T[]) Array.newInstance(clazz,inputArray.length-numOfOccurences);
+        T[] returnArr = Arrays.copyOf(inputArray,inputArray.length-numOfOccurences);
         int count = 0;
 
         for(int i=0,j=0;i<inputArray.length;i++){

@@ -18,7 +18,7 @@ public class RemoveValueTest {
 
 
         // When
-        Integer[] actual = arrayUtility.removeValue(valueToRemove,Integer.class);
+        Integer[] actual = arrayUtility.removeValue(valueToRemove);
 
         // Then
         UnitTestingUtils.assertArrayEquality(expected, actual);
@@ -34,7 +34,7 @@ public class RemoveValueTest {
 
 
         // When
-        Long[] actual = arrayUtility.removeValue(valueToRemove,Long.class);
+        Long[] actual = arrayUtility.removeValue(valueToRemove);
 
         // Then
         UnitTestingUtils.assertArrayEquality(expected, actual);
@@ -51,7 +51,7 @@ public class RemoveValueTest {
 
 
         // When
-        String[] actual = arrayUtility.removeValue(valueToRemove,String.class);
+        String[] actual = arrayUtility.removeValue(valueToRemove);
 
         // Then
         UnitTestingUtils.assertArrayEquality(expected, actual);
@@ -69,7 +69,7 @@ public class RemoveValueTest {
 
 
         // When
-        Object[] actual = arrayUtility.removeValue(valueToRemove,Object.class);
+        Object[] actual = arrayUtility.removeValue(valueToRemove);
 
         // Then
         UnitTestingUtils.assertArrayEquality(expected, actual);
