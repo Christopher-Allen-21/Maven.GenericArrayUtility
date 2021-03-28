@@ -35,26 +35,26 @@ public class ArrayUtility <T>{
     public T getMostCommonFromMerge(T[] arrayToMerge,Class<T> clazz) {
         T[] mergedArray = mergeArrays(inputArray,arrayToMerge,clazz);
 
-        T object1;
-        Integer count1 = 1;
-        T object2 = null;
-        Integer count2 = 1;
+        T temp;
+        Integer tempCount = 1;
+        T maxValue = null;
+        Integer maxCount = 1;
 
         for(int i=0;i<mergedArray.length;i++){
-            object1 = mergedArray[i];
+            temp = mergedArray[i];
             for(int j=i+1;j<mergedArray.length;j++){
-                if(object1.equals(mergedArray[j])){
-                    count1++;
+                if(temp.equals(mergedArray[j])){
+                    tempCount++;
                 }
             }
-            if(count1 > count2){
-                object2 = object1;
-                count2 = count1;
+            if(tempCount > maxCount){
+                maxValue = temp;
+                maxCount = tempCount;
             }
-            count1 = 1;
+            tempCount = 1;
         }
 
-        return object2;
+        return maxValue;
     }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
